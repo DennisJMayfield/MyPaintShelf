@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @FetchRequest(sortDescriptors: []) var paints: FetchedResults<Paint>
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView(){
+            List{
+                Text("Paint")
+                
+            }
+            .navigationTitle("MyPaintShelf")
+          
+            
         }
-        .padding()
     }
 }
 

@@ -11,6 +11,8 @@
 		BAD643B029B040BC00BAAC81 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD643AF29B040BC00BAAC81 /* ContentView.swift */; };
 		BAD643B229B040BF00BAAC81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAD643B129B040BF00BAAC81 /* Assets.xcassets */; };
 		BAD643B529B040BF00BAAC81 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAD643B429B040BF00BAAC81 /* Preview Assets.xcassets */; };
+		BAD643BD29BFF90D00BAAC81 /* MyPaintShelf.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAD643BB29BFF90D00BAAC81 /* MyPaintShelf.xcdatamodeld */; };
+		BAD643BF29BFFAFD00BAAC81 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD643BE29BFFAFC00BAAC81 /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		BAD643AF29B040BC00BAAC81 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BAD643B129B040BF00BAAC81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAD643B429B040BF00BAAC81 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BAD643BC29BFF90D00BAAC81 /* MyPaintShelf.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyPaintShelf.xcdatamodel; sourceTree = "<group>"; };
+		BAD643BE29BFFAFC00BAAC81 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			children = (
 				BAD643AD29B040BC00BAAC81 /* MyPaintShelfApp.swift */,
 				BAD643AF29B040BC00BAAC81 /* ContentView.swift */,
+				BAD643BE29BFFAFC00BAAC81 /* DataController.swift */,
+				BAD643BB29BFF90D00BAAC81 /* MyPaintShelf.xcdatamodeld */,
 				BAD643B129B040BF00BAAC81 /* Assets.xcassets */,
 				BAD643B329B040BF00BAAC81 /* Preview Content */,
 			);
@@ -138,7 +144,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAD643B029B040BC00BAAC81 /* ContentView.swift in Sources */,
+				BAD643BF29BFFAFD00BAAC81 /* DataController.swift in Sources */,
 				BAD643AE29B040BC00BAAC81 /* MyPaintShelfApp.swift in Sources */,
+				BAD643BD29BFF90D00BAAC81 /* MyPaintShelf.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +347,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BAD643BB29BFF90D00BAAC81 /* MyPaintShelf.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BAD643BC29BFF90D00BAAC81 /* MyPaintShelf.xcdatamodel */,
+			);
+			currentVersion = BAD643BC29BFF90D00BAAC81 /* MyPaintShelf.xcdatamodel */;
+			path = MyPaintShelf.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BAD643A229B040BC00BAAC81 /* Project object */;
 }
