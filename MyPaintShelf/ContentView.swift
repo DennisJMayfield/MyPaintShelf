@@ -10,46 +10,84 @@ import SwiftUI
 
 
 struct ContentView: View {
-    init() {
-           //Use this if NavigationBarTitle is with Large Font
-           //UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: "Georgia-Bold", size: 20)!]
-
-           //Use this if NavigationBarTitle is with displayMode = .inline
-        UINavigationBar.appearance().titleTextAttributes = [.font : UIFont(name: "AcademyEngravedLetPlain", size: 34)!]
-       }
+   
     
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var paints: FetchedResults<Paint>
     @State private var showingaddPaint = false
     @State private var name: String = ""
     
+    func removePaints(at offsets: IndexSet) {
+        for index in offsets {
+            let paint = paints[index]
+            
+            moc.delete(paint)
+            
+            do {
+                try moc.save()
+            } catch {
+                print("Well Whaddya know...")
+            }
+            
+        }
+    }
+    
     var body: some View {
+        
         NavigationView(){
             VStack{
                 List{
-                    Text("Paint")
-                    
-                }
-                //.navigationBarTitle(Text("Dashboard").font(.subheadline), displayMode: .large)
-                .navigationBarTitle (Text("My Paint Shelf").font(.largeTitle), displayMode: .inline)
-                
-                .listStyle(.insetGrouped)
-                Button(action: {}, label: {
-                    HStack {
-                        Image(systemName: "plus.circle")
-                        Text("Add new paint")
-                    }
-                })
-                .popover(isPresented: $showingaddPaint) {
-                    TextField("Enter your paint name.", text:$name)
-                        .font(.headline)
-                        .padding()
+                    ForEach(paints, id: \.self) { paint in
+                        Text(paint.name ?? "No name?")
                         
+                    }
+                    .onDelete(perform: removePaints)
+                  
+//                    .navigationBarTitle(Text("My Paint Shelf").font(.largeTitle), displayMode: .inline)
+                    .listStyle(.insetGrouped)
+                    Spacer()
+                }
+        
+                .navigationBarTitleDisplayMode(.inline)
+                        .toolbar { // <2>
+                            ToolbarItem(placement: .principal) { // <3>
+                                VStack {
+                                    Text("My Paint Shelf").font(.headline)
+                                    Text("").font(.subheadline)
+                                }
+                            }
+                        }
+               
+                    Button(action: {showingaddPaint.toggle()}, label: {
+                        HStack {
+                            Image(systemName: "plus.circle")
+                            Text("Add new paint")
+                        }
+                    })
+                    .popover(isPresented: $showingaddPaint) {
+                        Form {
+                            Section {
+                                TextField("Enter paint name", text: $name)
+                                    .disableAutocorrection(true)
+                                Spacer(minLength: 40)
+                                Button ("Save") {
+                                    let paint = Paint(context: self.moc)
+                                    paint.name = self.name
+                                    
+                                    do {
+                                        try self.moc.save()
+                                    } catch {
+                                        print("Oh good lort...")
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
     }
-}
+
 
 
 struct ContentView_Previews: PreviewProvider {
